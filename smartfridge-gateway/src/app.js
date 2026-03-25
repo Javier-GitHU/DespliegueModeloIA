@@ -5,13 +5,11 @@ import predictionRoutes from "./controllers/predictionController.js";
 
 const app = express();
 
-// Logging automático
 app.use(morgan("dev"));
 
-// Rutas
+
 app.use("/api", predictionRoutes);
 
-// Manejo de errores global
 app.use((err, req, res, next) => {
     console.error("❌ Error:", err.message);
     res.status(500).json({ error: "Error interno del servidor" });
