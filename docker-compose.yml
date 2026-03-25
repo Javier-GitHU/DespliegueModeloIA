@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  ai-service:
+    build: ./ai-service
+    container_name: ai-service
+    ports:
+      - "8000:8000"
+
+  gateway:
+    build: ./smartfridge-gateway
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ai-service
